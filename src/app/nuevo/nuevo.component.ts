@@ -33,6 +33,6 @@ export class NuevoComponent implements OnInit {
   }
 
   volver() {
-    this.router.navigate(["/tareas"]);
+    this.router.navigate(["/"]);
   }
 }
