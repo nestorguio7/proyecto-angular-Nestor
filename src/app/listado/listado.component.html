@@ -1,0 +1,43 @@
+<div class="row justify-content-center align-items-center listadoClientes">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombres y Apellidos</th>
+        <th scope="col">Fecha de Nacimiento</th>
+        <th scope="col">Edad</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientes">
+        <th scope="row">1</th>
+        <td>{{ cliente.nombres }} {{ cliente.apellidos }}</td>
+        <td>{{ cliente.fecha }}</td>
+        <td>{{ cliente.edad }}</td>
+        <td>@mdo</td>
+      </tr>
+      <!-- <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+        <td>@twitter</td>
+      </tr> -->
+    </tbody>
+  </table>
+
+  <div class="col d-flex justify-content-between pieContenido">
+    <div class="col">Edad Promedio:</div>
+    <div class="col">Promedio de vida:</div>
+    <div class="col">
+      <a routerLink="/nuevo" class="btn btn-primary">Agregar cliente</a>
+    </div>
+  </div>
+</div>

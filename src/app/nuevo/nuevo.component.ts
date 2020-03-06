@@ -16,8 +16,8 @@ export class NuevoComponent implements OnInit {
   ngOnInit() {
     this.grupo = new FormGroup({
       //id: new FormControl(_.uniqueId('000')),
-      nombre: new FormControl(null, Validators.required),
-      apellido: new FormControl(null, Validators.required),
+      nombres: new FormControl(null, Validators.required),
+      apellidos: new FormControl(null, Validators.required),
       fecha: new FormControl(new Date()),
       edad: new FormControl(null, Validators.required)
     });
