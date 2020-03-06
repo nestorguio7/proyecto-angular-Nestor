@@ -34,12 +34,22 @@ export class NuevoComponent implements OnInit {
 
   selectFecha(c, e) {
     console.log("change", c);
-    console.log("event", e.target.value);
-    //let fecha = ;
-    let ano = e.target.value.split("-")[0];
-    let anoCurrent = new Date().getFullYear();
-    console.log("AÑO---> ", ano);
-    console.log("Edad: ", anoCurrent - ano);
+    console.log("event", e);
+    console.log("Edad: ", this.calculateAge(e.target.value));
+  }
+
+  calculateAge(dateString) {
+    var hoy = new Date();
+    var fechaNacimiento = new Date(dateString);
+    var edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+    var diferenciaMeses = hoy.getMonth() - fechaNacimiento.getMonth();
+    if (
+      diferenciaMeses < 0 ||
+      (diferenciaMeses === 0 && hoy.getDate() < fechaNacimiento.getDate())
+    ) {
+      edad--;
+    }
+    return edad;
   }
 
   volver() {
