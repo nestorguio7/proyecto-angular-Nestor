@@ -35,10 +35,11 @@ export class NuevoComponent implements OnInit {
   selectFecha(c, e) {
     console.log("change", c);
     console.log("event", e.target.value);
-    let fecha = e.target.value;
-    let ano = fecha.split("-")[0];
+    //let fecha = ;
+    let ano = e.target.value.split("-")[0];
+    let anoCurrent = new Date().getFullYear();
     console.log("AÑO---> ", ano);
-    console.log("ACTUAL: ", new Date().getFullYear());
+    console.log("Edad: ", anoCurrent - ano);
   }
 
   volver() {
