@@ -32,8 +32,7 @@ export class NuevoComponent implements OnInit {
     });
   }
 
-  selectFecha(c, e) {
-    console.log("change", c);
+  selectFecha(e) {
     console.log("event", e);
     console.log("Edad: ", this.calculateAge(e.target.value));
   }
