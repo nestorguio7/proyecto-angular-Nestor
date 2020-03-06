@@ -18,8 +18,8 @@ export class NuevoComponent implements OnInit {
       //id: new FormControl(_.uniqueId('000')),
       nombre: new FormControl(null, Validators.required),
       apellido: new FormControl(null, Validators.required),
-      status: new FormControl(null, Validators.required),
-      fecha: new FormControl(new Date())
+      fecha: new FormControl(new Date()),
+      status: new FormControl(null, Validators.required)
     });
   }
 
@@ -30,6 +30,15 @@ export class NuevoComponent implements OnInit {
       this.router.navigate(["/tareas"]);
       //alert('Tarea Creada con éxito!')
     });
+  }
+
+  selectFecha(c, e) {
+    console.log("change", c);
+    console.log("event", e.target.value);
+    let fecha = e.target.value;
+    let ano = fecha.split("-")[0];
+    console.log("AÑO---> ", ano);
+    console.log("ACTUAL: ", new Date().getFullYear());
   }
 
   volver() {

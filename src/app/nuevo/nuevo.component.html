@@ -29,12 +29,13 @@
       <div class="form-group">
         <div class="control">
           <div class="select is-info">
-            <label class="label">Seleccionar estado de la tarea</label>
+            <label class="label">Fecha de nacimiento</label>
             <input
               class="form-control"
               type="date"
-              placeholder="Ingresar apellido "
-              formControlName="apellido"
+              placeholder="Fecha de nacimiento"
+              formControlName="fecha"
+              (change)="selectFecha('change', $event)"
             />
             <!-- <select
               class="form-control"
