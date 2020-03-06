@@ -15,7 +15,7 @@ export class UsuarioService {
 
   listar(): Observable<Usuario[]> {
     return this.http.get<any>(
-      "http://localhost:3001/tareas"
+      "http://localhost:3001/cliente"
     ); /* .pipe(delay(100)) */
   }
 
@@ -35,7 +35,7 @@ export class UsuarioService {
   }
 
   insertar(tarea: Usuario): Observable<any> {
-    return this.http.post(`http://localhost:3001/tareas`, tarea);
+    return this.http.post(`http://localhost:3001/cliente`, tarea);
   }
 
   modificar(tarea: Usuario, _id: string): Observable<any> {

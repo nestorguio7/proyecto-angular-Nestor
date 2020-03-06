@@ -19,7 +19,7 @@ export class NuevoComponent implements OnInit {
       nombre: new FormControl(null, Validators.required),
       apellido: new FormControl(null, Validators.required),
       fecha: new FormControl(new Date()),
-      status: new FormControl(null, Validators.required)
+      edad: new FormControl(null, Validators.required)
     });
   }
 
@@ -27,7 +27,7 @@ export class NuevoComponent implements OnInit {
     console.log("NUEVO::: ", this.grupo.getRawValue());
     this.userService.insertar(this.grupo.getRawValue()).subscribe(() => {
       this.userService.onActualizar.next();
-      this.router.navigate(["/tareas"]);
+      this.router.navigate(["/"]);
       //alert('Tarea Creada con éxito!')
     });
   }
@@ -35,6 +35,7 @@ export class NuevoComponent implements OnInit {
   selectFecha(e) {
     console.log("event", e);
     console.log("Edad: ", this.calculateAge(e.target.value));
+    this.grupo.patchValue({ edad: this.calculateAge(e.target.value) });
   }
 
   calculateAge(dateString) {
