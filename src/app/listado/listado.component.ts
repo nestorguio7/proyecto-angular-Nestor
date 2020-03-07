@@ -3,6 +3,7 @@ import { FormGroup } from "@angular/forms";
 import { UsuarioService } from "../services/usuario.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Usuario } from "../models/usuario";
+import { faTrashAlt, faEdit } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: "app-listado",
@@ -12,6 +13,10 @@ import { Usuario } from "../models/usuario";
 export class ListadoComponent implements OnInit {
   grupo: FormGroup;
   clientes: Usuario[];
+  edadProm: Number;
+
+  faTrashAlt = faTrashAlt;
+  faEdit = faEdit;
 
   constructor(
     private clienteService: UsuarioService,
@@ -35,7 +40,28 @@ export class ListadoComponent implements OnInit {
         console.log("EN LISTAR --->", resp["results"]);
 
         this.clientes = resp["results"];
+        let temp = 0;
+        this.clientes.forEach(element => {
+          temp += element.edad;
+        });
+        this.edadProm = Math.floor(temp / this.clientes.length);
       });
     }
+  }
+
+  editarCliente(id) {
+    console.log("[EDITAR]", id);
+
+    this.router.navigate(["/", "editar", id]);
+  }
+
+  eliminarCliente(_id: string) {
+    console.log("Eliminar usuario");
+
+    this.clienteService.eliminar(_id).subscribe(resp => {
+      console.log("result api: ", resp);
+      this.clienteService.onActualizar.next();
+      this.listar();
+    });
   }
 }

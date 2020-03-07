@@ -10,12 +10,25 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let cliente of clientes">
-        <th scope="row">1</th>
+      <tr *ngFor="let cliente of clientes; index as i">
+        <th scope="row">{{ i + 1 }}</th>
         <td>{{ cliente.nombres }} {{ cliente.apellidos }}</td>
         <td>{{ cliente.fecha }}</td>
         <td>{{ cliente.edad }}</td>
-        <td>@mdo</td>
+        <td>
+          <a
+            class="menu--item menu--editar"
+            (click)="editarCliente(cliente._id)"
+          >
+            <fa-icon [icon]="faEdit"></fa-icon>
+          </a>
+          <a
+            class="menu--item menu--eliminar"
+            (click)="eliminarCliente(cliente._id)"
+          >
+            <fa-icon [icon]="faTrashAlt"></fa-icon>
+          </a>
+        </td>
       </tr>
       <!-- <tr>
         <th scope="row">2</th>
@@ -34,8 +47,12 @@
   </table>
 
   <div class="col d-flex justify-content-between pieContenido">
-    <div class="col">Edad Promedio:</div>
-    <div class="col">Promedio de vida:</div>
+    <div class="col textEdadProm">
+      <span>
+        Edad Promedio: <b> {{ edadProm }}</b></span
+      >
+    </div>
+    <div class="col"><!-- Promedio de vida: --></div>
     <div class="col">
       <a routerLink="/nuevo" class="btn btn-primary">Agregar cliente</a>
     </div>

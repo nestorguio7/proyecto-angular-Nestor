@@ -20,29 +20,18 @@ export class UsuarioService {
   }
 
   detallar(id: string): Observable<Usuario> {
-    return this.http.get<Usuario>(`http://localhost:3001/tareas/detalle/${id}`);
+    return this.http.get<Usuario>(`http://localhost:3001/cliente/${id}`);
   }
 
-  filtrar(param): Observable<Usuario[]> {
-    console.log("FILTRAR> ", param);
-    return this.http.get<any>("http://localhost:3001/tareas").pipe(
-      map(tarea => {
-        return tarea["results"].filter(task => {
-          return task.status === param;
-        });
-      })
-    );
+  insertar(cliente: Usuario): Observable<any> {
+    return this.http.post(`http://localhost:3001/cliente`, cliente);
   }
 
-  insertar(tarea: Usuario): Observable<any> {
-    return this.http.post(`http://localhost:3001/cliente`, tarea);
-  }
-
-  modificar(tarea: Usuario, _id: string): Observable<any> {
-    return this.http.put(`http://localhost:3001/tareas/${_id}`, tarea);
+  modificar(cliente: Usuario, _id: string): Observable<any> {
+    return this.http.put(`http://localhost:3001/cliente/${_id}`, cliente);
   }
 
   eliminar(_id: string): Observable<any> {
-    return this.http.delete(`http://localhost:3001/tareas/${_id}`);
+    return this.http.delete(`http://localhost:3001/cliente/${_id}`);
   }
 }
