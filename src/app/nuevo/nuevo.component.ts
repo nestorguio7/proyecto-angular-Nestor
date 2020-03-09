@@ -28,7 +28,6 @@ export class NuevoComponent implements OnInit {
     this.userService.insertar(this.grupo.getRawValue()).subscribe(() => {
       this.userService.onActualizar.next();
       this.router.navigate(["/"]);
-      //alert('Tarea Creada con éxito!')
     });
   }
 
